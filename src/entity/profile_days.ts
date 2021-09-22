@@ -20,7 +20,7 @@ export class profile_days {
     @Column()
     endTime: string;
 
-    @ManyToOne(() => profile_scales, profile => profile)
-    profile: profile_scales;
+    @ManyToOne(() => profile_scales, scale => scale)
+    scale: profile_scales;
 
 }

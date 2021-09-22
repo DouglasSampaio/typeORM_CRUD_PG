@@ -1,5 +1,6 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm";
-import {Photo} from "./Photo";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+
+import { users_scales } from './users_scales';
 
 @Entity()
 export class User {
@@ -8,9 +9,14 @@ export class User {
     id: number;
 
     @Column()
-    name: string;
+    name!:string;
 
-    @OneToMany(() => Photo, photo => photo)
-    photos: Photo[];
+    @Column({
+        unique: true
+      })
+      login!: string;
+
+    @OneToMany(() => users_scales, user => user)
+    user: users_scales[];
 
 }
